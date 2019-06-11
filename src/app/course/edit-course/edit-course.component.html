@@ -1,0 +1,42 @@
+<div class="modal fade" id="courseEditModal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <form [formGroup]="courseGroup" (ngSubmit)="onSubmit()">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit course</h4>
+                    <simple-notifications [options]="options"></simple-notifications>
+                </div>
+                <div class="modal-body">
+
+                    <input class="form-control" placeholder="name" formControlName="name" [(ngModel)]='course.name'>
+                    <p *ngIf="!courseGroup.controls['name'].valid && courseGroup.controls['name'].touched" class="invalid">Name is required and least 10 symbols </p>
+                    <label for="category" class="label label-default">Select category</label>
+                    <select class="form-control" formControlName="category" id="category" [(ngModel)]='course.category' >
+                                <option value="web development">Web Development</option>
+                                <option value="front-end">Front-End</option>
+                                <option value="back-end">Back-End</option>
+                            </select>
+                    <p *ngIf="!courseGroup.controls['category'].valid && courseGroup.controls['category'].touched" class="invalid">Category is required and least 4 Symbols </p>
+                    <input class="form-control" placeholder="teacher name" type="string" formControlName="teacherName" [(ngModel)]='course.teacherName'>
+                    <p *ngIf="!courseGroup.controls['teacherName'].valid && courseGroup.controls['teacherName'].touched" class="invalid">Teacher Name is required and least 4 symbols </p>
+                    <input class="form-control" placeholder="teacher email" formControlName="teacherEmail" [(ngModel)]='course.teacherEmail'>
+                    <p *ngIf="!courseGroup.controls['teacherEmail'].valid && courseGroup.controls['teacherEmail'].touched" class="invalid">Teacher email is required </p>
+                    <textarea class="form-control" placeholder="description" formControlName="description" [(ngModel)]='course.description'></textarea>
+                    <p *ngIf="!courseGroup.controls['description'].valid && courseGroup.controls['description'].touched" class="invalid">description is required </p>
+                    <input class="form-control" placeholder="language" formControlName="language" [(ngModel)]='course.language'>
+                    <p *ngIf="!courseGroup.controls['language'].valid && courseGroup.controls['language'].touched" class="invalid">language is required </p>
+                    <input class="form-control" placeholder="image path" formControlName="img" [(ngModel)]='course.img'>
+                    <p *ngIf="!courseGroup.controls['img'].valid && courseGroup.controls['img'].touched" class="invalid">Image path should be valid</p>
+                    <label for="visible" class="label label-default">Visible to all users</label>
+                    <input class="form-control" id="visible" placeholder="visible to all users" type="checkbox" formControlName="visible" [(ngModel)]='course.visible' name="visible">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" [disabled]=!courseGroup.valid>Edit Course</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)='gotoList()'>Close</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

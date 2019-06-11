@@ -1,0 +1,38 @@
+<select [(ngModel)]="category" class="form-control filter">
+        <option value="newest">5 newest courses</option>
+        <option value="latest">5 latest updated courses</option>
+        <option value="raiting">5 courses with highest rating</option>
+    </select>
+<div class="row" [@listAnimation]="courses.length">
+    <div class="col-sm-4 col-md-4" *ngFor="let course of courses | top:category | slice:0:5 ">
+        <div class="thumbnail">
+            <img src="{{course.img}}" alt="">
+            <div class="caption">
+                <h3>{{course.name | slice:0:22}}..</h3>
+                <div id="container-content">
+                        <div class="glyphicon glyphicon-info-sign"> Description:</div>
+                        <p class="course-descr"> {{course.description}}</p>
+                    </div>
+                    <div>
+                        <div class="glyphicon glyphicon-user"> Teacher:</div>
+                        <p class="course-descr"> {{course.teacherName}}</p>
+                    </div>
+                    <div>
+                        <div class="glyphicon glyphicon-star"> Raiting: </div>
+                        <p class="course-descr"> {{((course.overall.one*1)+(course.overall.two*2)+(course.overall.three*3)+(course.overall.four*4)+(course.overall.five*5))/(course.overall.one+course.overall.two+course.overall.three+course.overall.four+course.overall.five)}}</p>
+                    </div>
+                    <div>
+                        <div class="glyphicon glyphicon-calendar"> Last Update:</div>
+                        <p class="course-descr"> {{course.lastUpdate | date}}</p>
+                    </div>
+                <p>
+                    <a (click)=gotoViewCourse(course) class="btn btn-primary glyphicon glyphicon-info-sign btn-color" role="button" data-toggle="modal" data-target="#courseDetailsModal"> </a>
+                    <a class="btn btn-primary glyphicon glyphicon-edit btn-color" role="button" *ngIf="auth.isAuthenticated()" data-toggle="modal" data-target="#courseEditModal"
+                        (click)=gotoEditCourse(course)></a>
+                    <a class="btn btn-danger glyphicon glyphicon-trash" role="button" *ngIf="auth.isAuthenticated()" data-toggle="modal" data-target="#courseDeleteModal"
+                        (click)=gotoDeleteCourse(course)></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

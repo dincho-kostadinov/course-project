@@ -1,0 +1,54 @@
+.btn{
+    background-color:rgb(26,188,156) ;
+    margin-top:1%;
+    width:17%;
+    
+}
+:hover .btn{
+    background-color:rgb(26,188,156) ;
+}
+.modal-title{
+    color:rgb(26,188,156) ;
+   
+}
+.thumbnail img{
+    width:60%;
+    height: 138px;
+}
+body.modal-open {
+    overflow: hidden;
+}
+
+p{
+    margin:2%;
+}
+.thumbnail{
+    line-height:210%
+}
+.glyphicon{
+    display: block;
+    margin-top:3%;
+}
+button[name="raiting"]{
+    margin-left:83%
+}
+select[name="select-raiting"]{
+    margin-left: 2%;
+    width:98%
+}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+     font-weight:normal;
+    width: 100%;
+    text-align: left;
+    margin-left: 2%;
+}
+.modal-footer{
+    padding: 6px;
+}
+.thumbnail .caption {
+    padding: 5px;
+    color: #333;
+}

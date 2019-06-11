@@ -1,0 +1,19 @@
+<div class="modal fade" id="courseDeleteModal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Delete {{course.name}}</h4>
+                <simple-notifications [options]="options"></simple-notifications>
+            </div>
+            <div class="modal-body">
+                <h3>Enter course's name to delete it!</h3>
+                <input type="string" class="form-control" [(ngModel)]="confirmation" required> {{confirmation}}
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" *ngIf="confirmation===course.name" (click)="onDelete()">Delete</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)='gotoList()'>Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>

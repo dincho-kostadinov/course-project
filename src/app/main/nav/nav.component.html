@@ -1,0 +1,10 @@
+<nav>
+    <ul class="nav nav-tabs">
+        <li role="presentation"><a [routerLink]="'/'">Home Page</a></li>
+        <li role="presentation"><a [routerLink]="'courses'">Courses</a></li>
+        <li role="presentation"><a [routerLink]="'top'" *ngIf="auth.isAuthenticated()">Top Courses</a></li>
+        <li role="presentation"><a [routerLink]="'login'" *ngIf="!auth.isAuthenticated()">Login</a></li>
+        <li role="presentation"><a [routerLink]="'register'" *ngIf="!auth.isAuthenticated()">Register</a></li>
+        <li role="presentation"><a (click)="onLogout()" *ngIf="auth.isAuthenticated()">Logout</a></li>
+    </ul>
+</nav>

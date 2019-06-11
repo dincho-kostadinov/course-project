@@ -1,0 +1,39 @@
+<div class="modal  fade " id="courseDetailsModal" role="dialog" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{course.name}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="thumbnail">
+                            <img src="{{course.img}}" alt="">
+                            <div class="caption">
+                                <p class="glyphicon glyphicon-th-large"> Category: {{course.category}} and Language:{{course.language}}</p>
+                                <p class="glyphicon glyphicon-info-sign"> Description: {{course.description}}</p>
+                                <p class="glyphicon glyphicon-user"> Teacher: {{course.teacherName}} and Teacher Email:{{course.teacherEmail}}</p>
+                                <p class="glyphicon glyphicon-star"> Raiting: {{((course.overall.one*1)+(course.overall.two*2)+(course.overall.three*3)+(course.overall.four*4)+(course.overall.five*5))/(course.overall.one+course.overall.two+course.overall.three+course.overall.four+course.overall.five)}}</p>
+                                <p class="glyphicon glyphicon-eye-open"> Free: {{course.visible}}</p>
+                                <p class="glyphicon glyphicon-calendar"> Creation Date: {{course.creationDate | date}} Last Update:{{course.lastUpdate | date}}</p>
+                                <label id="raiting">Select Rating</label>
+                                <select [(ngModel)]="raiting"  class="form-control" name="select-raiting" id="raiting">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                                <button type="button" class="btn btn-primary glyphicon glyphicon-star"  (click)='onRate(raiting)' [disabled]="!raiting" name="raiting"> Rate</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)='gotoList()'>Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>

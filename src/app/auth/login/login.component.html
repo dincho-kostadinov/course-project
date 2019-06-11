@@ -1,0 +1,16 @@
+<simple-notifications [options]="options"></simple-notifications>
+<h1 @explainerAnim>
+    <div class="heading-style">Lo</div>gin</h1>
+<form (ngSubmit)="onSubmit(form)" #form="ngForm" @explainerAnim>
+    <div class="form-group">
+        <label for="email">Email <div class="heading-style">address:</div></label>
+        <input type="email" class="form-control" id="email" name="email" ngModel required minlength="3" #email="ngModel">
+        <p class="err-msg" *ngIf="!email.valid && email.touched">Email is required</p>
+    </div>
+    <div class="form-group">
+        <label for="pwd"> <div class="heading-style">Password:</div></label>
+        <input type="password" class="form-control" name="password" id="pwd" ngModel required minlength="3" #pass="ngModel">
+        <p class="err-msg" *ngIf="!pass.valid && pass.touched">Password is required</p>
+    </div>
+    <button type="submit" class="btn btn-primary glyphicon glyphicon-log-in " [disabled]="!form.valid"></button>
+</form>
